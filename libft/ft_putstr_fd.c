@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_minitalk.h                                      :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 20:52:03 by rteles            #+#    #+#             */
-/*   Updated: 2022/02/15 22:26:25 by rteles           ###   ########.fr       */
+/*   Created: 2021/11/04 22:38:27 by rteles            #+#    #+#             */
+/*   Updated: 2021/11/16 23:14:40 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_MINITALK_H
-# define FT_MINITALK_H
+#include "libft.h"
 
-# include "libft/ft_printf.h"
-# include "libft/libft.h"
-# include <signal.h>
+void	ft_putstr_fd(char *s, int fd)
+{
+	int		i;
+	char	a;
 
-#endif
+	i = 0;
+	a = ' ';
+	if (s == 0)
+		write(fd, &a, 1);
+	else
+	{
+		while (s[i])
+		{
+			write(fd, &s[i], 1);
+			i++;
+		}
+	}
+}

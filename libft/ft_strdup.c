@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_minitalk.h                                      :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 20:52:03 by rteles            #+#    #+#             */
-/*   Updated: 2022/02/15 22:26:25 by rteles           ###   ########.fr       */
+/*   Created: 2021/11/04 18:37:13 by rteles            #+#    #+#             */
+/*   Updated: 2021/11/16 23:15:02 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_MINITALK_H
-# define FT_MINITALK_H
+#include "libft.h"
+#include <stdlib.h>
 
-# include "libft/ft_printf.h"
-# include "libft/libft.h"
-# include <signal.h>
+char	*ft_strdup(const char *s)
+{
+	char	*str;
+	int		len;
 
-#endif
+	len = ft_strlen(s);
+	str = malloc((len + 1) * sizeof(char));
+	if (str == 0)
+		return (0);
+	len = 0;
+	while (s[len])
+	{
+		str[len] = s[len];
+		len++;
+	}
+	str[len] = '\0';
+	return (str);
+}

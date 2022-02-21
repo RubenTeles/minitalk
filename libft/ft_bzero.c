@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_minitalk.h                                      :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 20:52:03 by rteles            #+#    #+#             */
-/*   Updated: 2022/02/15 22:26:25 by rteles           ###   ########.fr       */
+/*   Created: 2021/10/24 19:28:41 by rteles            #+#    #+#             */
+/*   Updated: 2021/12/22 16:06:57 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_MINITALK_H
-# define FT_MINITALK_H
+#include "libft.h"
 
-# include "libft/ft_printf.h"
-# include "libft/libft.h"
-# include <signal.h>
+void	ft_bzero(void *s, size_t n)
+{
+	size_t	i;
+	char	*rtstr;
 
-#endif
+	i = 0;
+	rtstr = (char *)s;
+	while (i < n)
+	{
+		rtstr[i] = '\0';
+		i++;
+	}
+	s = (void *)rtstr;
+}

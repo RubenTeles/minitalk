@@ -6,15 +6,20 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 22:35:53 by rteles            #+#    #+#             */
-/*   Updated: 2022/02/15 23:25:24 by rteles           ###   ########.fr       */
+/*   Updated: 2022/02/21 20:01:49 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
-#include <stdio.h>
 #include <unistd.h>
+#include "ft_minitalk.h"
 
 volatile sig_atomic_t	shutdown_flag = 1;
+
+static void	action(int sig, siginfo_t *info, void *context)
+{
+
+}
 
 void	cleanupRoutine(int signal_number)
 {
@@ -26,11 +31,12 @@ int	main(void)
 	pid_t				ip;
 	struct sigaction	signal_action;
 
-	sigterm_action.sa_handler = &cleanupRoutine;
-	sigterm_action.sa_flags = 0;
-
+	signal_action.sa_handler = leanupRoutine;
+	signal_action.sa_flags = 0;
+	signal_action.sa_sigaction = action;
+	sigaction(SIG)
 	ip = getpid();
-	printf("PID: %i", ip);
+	ft_printf("PID: %i\n", ip);
 	while (1)
 		pause();
 	return (0);
@@ -43,4 +49,13 @@ struct sigaction {
                sigset_t   sa_mask;
                int        sa_flags;
                void     (*sa_restorer)(void);
-           };*/
+           };
+		   
+		   
+int kill(pid_t ip, int sig) envia sinal para o processo
+		   
+		   
+		   
+		   */
+
+

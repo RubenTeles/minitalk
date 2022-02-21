@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_minitalk.h                                      :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 20:52:03 by rteles            #+#    #+#             */
-/*   Updated: 2022/02/15 22:26:25 by rteles           ###   ########.fr       */
+/*   Created: 2021/11/04 18:30:20 by rteles            #+#    #+#             */
+/*   Updated: 2021/11/16 23:15:17 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_MINITALK_H
-# define FT_MINITALK_H
+#include "libft.h"
 
-# include "libft/ft_printf.h"
-# include "libft/libft.h"
-# include <signal.h>
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
+{
+	size_t	i;
+	int		len;
 
-#endif
+	i = 0;
+	if (size < ft_strlen(dest))
+		return (size + ft_strlen(src));
+	else
+	{
+		while (dest[i])
+			i++;
+		ft_strlcpy(&dest[i], src, size - i);
+		len = ft_strlen(src) + i;
+		return (len);
+	}
+}

@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_minitalk.h                                      :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 20:52:03 by rteles            #+#    #+#             */
-/*   Updated: 2022/02/15 22:26:25 by rteles           ###   ########.fr       */
+/*   Created: 2021/10/24 15:37:18 by rteles            #+#    #+#             */
+/*   Updated: 2021/11/16 23:14:58 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_MINITALK_H
-# define FT_MINITALK_H
+#include "libft.h"
 
-# include "libft/ft_printf.h"
-# include "libft/libft.h"
-# include <signal.h>
+char	*ft_strchr(const char *string, int c)
+{
+	int		i;
+	char	*rtstr;
 
-#endif
+	i = 0;
+	rtstr = (char *)string;
+	while (rtstr[i])
+	{
+		if (rtstr[i] == (unsigned char)c)
+			return (&rtstr[i]);
+		i++;
+	}
+	if (rtstr[i] == c)
+		return (&rtstr[i]);
+	return (0);
+}

@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 22:35:53 by rteles            #+#    #+#             */
-/*   Updated: 2022/02/21 20:01:49 by rteles           ###   ########.fr       */
+/*   Updated: 2022/04/02 23:01:13 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ int	main(void)
 	pid_t				ip;
 	struct sigaction	signal_action;
 
-	signal_action.sa_handler = leanupRoutine;
+	signal_action.sa_handler = cleanupRoutine;
 	signal_action.sa_flags = 0;
 	signal_action.sa_sigaction = action;
-	sigaction(SIG)
+	sigaction(SIG);
 	ip = getpid();
 	ft_printf("PID: %i\n", ip);
 	while (1)

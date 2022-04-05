@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   testes.c                                           :+:      :+:    :+:   */
+/*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 16:31:18 by rteles            #+#    #+#             */
-/*   Updated: 2022/04/05 22:12:34 by rteles           ###   ########.fr       */
+/*   Updated: 2022/04/05 22:33:25 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,18 +88,17 @@ int	main(void)
 }
 
 /*
-kill() - envia um sinal para um outro processo ou para um outro grupo de processos
+kill() - envia um sinal para um outro processo ou para um 
+outro grupo de processos
 retorna 0 se o sinal for enviado com sucesso e -1 se deu erro
 signal
 SIGINT       terminate process    interrupt program
 SIGUSR1 terminate process    User defined signal 1
 SIGUSR2 terminate process    User defined signal 2
-*/
 
-
-/*
 struct sigaction {
-               void     (*sa_handler)(int); 						- e onde lidamos com os sinais
+               void     (*sa_handler)(int); 						- e onde lidamos 
+			   com os sinais
                void     (*sa_sigaction)(int, siginfo_t *, void *);  - 
                sigset_t   sa_mask;									- bloquear sinais 
                int        sa_flags;

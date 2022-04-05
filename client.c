@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/05 22:32:27 by rteles            #+#    #+#             */
+/*   Updated: 2022/04/05 22:32:43 by rteles           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <signal.h>
 #include <unistd.h>
@@ -64,7 +75,7 @@ int	main(int argc, char **argv)
 {
 	pid_t	ip;
 
-	if (argc != 3) 
+	if (argc != 3)
 		return (0);
 	signal(SIGUSR1, action);
 	ip = convert_pid(argv[1]);

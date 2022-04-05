@@ -1,20 +1,17 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 20:44:53 by rteles            #+#    #+#             */
-/*   Updated: 2022/04/02 23:01:12 by rteles           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
-//#include "ft_minitalk.h"
 #include <signal.h>
-#include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+
+static void	action(int sig)
+{
+	if (sig == SIGUSR1)
+	{
+		write(STDOUT_FILENO, "Received!", 9);
+		write(STDOUT_FILENO, "\n", 1);
+		exit(-1);
+	}
+}
 
 int	convert_pid(char *pid)
 {
@@ -37,21 +34,44 @@ int	convert_pid(char *pid)
 	return (ip);
 }
 
+static void	send_char(pid_t ip, char c)
+{
+	int	i;
+
+	i = -1;
+	while (++i < 8)
+	{
+		kill(ip, ((c >> i & 1) + SIGUSR1));
+		usleep(1000);
+	}
+}
+
+void	send_message(pid_t ip, char *message)
+{
+	int	index;
+
+	index = 0;
+	while (message[index])
+	{
+		send_char(ip, message[index]);
+		index++;
+	}
+	if (message[index] == '\0')
+		send_char(ip, message[index]);
+}
+
 int	main(int argc, char **argv)
 {
 	pid_t	ip;
-	int		message;
 
+	if (argc != 3) 
+		return (0);
+	signal(SIGUSR1, action);
 	ip = convert_pid(argv[1]);
-	kill(ip, message);
+	send_message(ip, argv[2]);
+	while (1)
+		pause();
 	return (0);
 }
 
-/*
-kill() - envia um sinal para um outro processo ou para um outro grupo de processos
-retorna 0 se o sinal for enviado com sucesso e -1 se deu erro
-signal
-SIGINT       terminate process    interrupt program
-SIGUSR1 terminate process    User defined signal 1  
-SIGUSR2 terminate process    User defined signal 2
-*/
+//|| !ft_strlen(argv[2]))//aqui

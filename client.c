@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 22:32:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/04/05 22:32:43 by rteles           ###   ########.fr       */
+/*   Updated: 2022/04/23 14:26:00 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	send_char(pid_t ip, char c)
 	while (++i < 8)
 	{
 		kill(ip, ((c >> i & 1) + SIGUSR1));
-		usleep(1000);
+		usleep(100);
 	}
 }
 
@@ -84,5 +84,3 @@ int	main(int argc, char **argv)
 		pause();
 	return (0);
 }
-
-//|| !ft_strlen(argv[2]))//aqui
